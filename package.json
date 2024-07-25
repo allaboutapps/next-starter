@@ -6,6 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "build:local": "next build && cp -R .next/static .next/standalone/.next",
+    "start:local": "node .next/standalone/server.js",
     "lint": "next lint"
   },
   "dependencies": {
