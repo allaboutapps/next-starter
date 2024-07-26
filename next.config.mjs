@@ -20,16 +20,17 @@ const nextConfig = {
     //     ],
     // },
 
-    // redirects: async () => {
-    //     const DEFAULT_LANGUAGE = "/de";
-    //     return [
-    //         {
-    //             source: "/",
-    //             destination: DEFAULT_LANGUAGE,
-    //             permanent: false,
-    //         },
-    //     ];
-    // },
+    redirects: async () => {
+        // Can't import from config, because next.config has to be a .mjs file
+        const DEFAULT_LOCALE = "/de";
+        return [
+            {
+                source: "/",
+                destination: DEFAULT_LOCALE,
+                permanent: false,
+            },
+        ];
+    },
 
     // If using a custom cache handler, set the path here
     // cacheHandler: process.env.NODE_ENV === "production" ? "cache-handler.mjs" : undefined,

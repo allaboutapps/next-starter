@@ -1,0 +1,6 @@
+- add i18n
+- forms
+- react-query
+- zustand
+- Icons
+- font
