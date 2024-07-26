@@ -1,8 +1,9 @@
+import { ClientIntlProvider } from "@/i18n/ClientIntlProvider";
+import { ThemeProvider } from "@mui/material";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../../styles/globals.css";
-import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
-import { ThemeProvider } from "@mui/material";
 import { theme } from "../../styles/theme";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -22,7 +23,9 @@ export default function RootLayout({ params, children }: Props) {
         <html lang={params.lang}>
             <body className={inter.className}>
                 <AppRouterCacheProvider>
-                    <ThemeProvider theme={theme}>{children}</ThemeProvider>
+                    <ClientIntlProvider>
+                        <ThemeProvider theme={theme}>{children}</ThemeProvider>
+                    </ClientIntlProvider>
                 </AppRouterCacheProvider>
             </body>
         </html>

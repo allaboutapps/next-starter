@@ -1,9 +1,4 @@
-export const locales = ["de", "en"] as const;
 import { PHASE_PRODUCTION_BUILD } from "next/constants";
-
-export type Locales = (typeof locales)[number];
-
-export const DEFAULT_LOCALE = "de";
 
 export const MOBILE_BREAKPOINT = 768;
 

@@ -1,4 +1,4 @@
-import { Locales, locales } from "@/config";
+import { Locales, locales } from "@/i18n/locales";
 import { usePathname } from "next/navigation";
 
 const LOCALES = locales as ReadonlyArray<string>;

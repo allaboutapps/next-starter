@@ -1,6 +1,6 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
-import { DEFAULT_LOCALE, locales } from "./config";
+import { DEFAULT_LOCALE, locales } from "./i18n/locales";
 
 // If invalid language provided -> redirect to default language's not found page
 const handleLanguageNotFound = (request: NextRequest) => {
