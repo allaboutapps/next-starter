@@ -2,5 +2,4 @@
 - react-query
 - zustand
 - Icons
-- font
 - add tests

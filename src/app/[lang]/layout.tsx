@@ -2,11 +2,9 @@ import { ClientIntlProvider } from "@/i18n/ClientIntlProvider";
 import { ThemeProvider } from "@mui/material";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { openSans } from "@/styles/fonts";
 import "../../styles/globals.css";
 import { theme } from "../../styles/theme";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
     title: "aaa next-starter",
@@ -20,8 +18,8 @@ type Props = {
 
 export default function RootLayout({ params, children }: Props) {
     return (
-        <html lang={params.lang}>
-            <body className={inter.className}>
+        <html lang={params.lang} className={openSans.className}>
+            <body>
                 <AppRouterCacheProvider>
                     <ClientIntlProvider>
                         <ThemeProvider theme={theme}>{children}</ThemeProvider>

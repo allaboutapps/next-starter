@@ -2,10 +2,11 @@
 
 import { createTheme } from "@mui/material";
 import { Colors } from "./colors";
+import { openSans } from "./fonts";
 
 export const theme = createTheme({
     typography: {
-        fontFamily: ["Open Sans", "sans-serif"].join(","),
+        fontFamily: openSans.style.fontFamily,
     },
     palette: {
         primary: {

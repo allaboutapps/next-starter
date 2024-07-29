@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    --primary: rgb(253, 128, 72);
+    --secondary: rgb(252, 205, 33);
+    --primary-active: rgb(253, 113, 48);
+    --secondary-active: rgb(247, 199, 22);
+    --body1: #444756;
+    --body2: #797979;
+    --headings: #1D2442;
+}
+
+
 *,
 *:before,
 *:after {
@@ -16,16 +27,9 @@ html {
 }
 
 body {
-    font-family: "Open Sans", sans-serif;
     -webkit-font-smoothing: antialiased;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     background: var(--body-background-color);
-}
-
-#root {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
 }
