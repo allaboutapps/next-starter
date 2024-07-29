@@ -1,5 +1,4 @@
 - forms
 - react-query
 - zustand
-- Icons
 - add tests

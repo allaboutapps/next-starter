@@ -1,6 +1,7 @@
 import { Locales } from "@/i18n/locales";
 import { tServer } from "@/i18n/util";
 import { MuiTest } from "./MuiTest";
+import { Icon } from "@/components/Icon";
 
 type Props = {
     params: { lang: Locales };
@@ -17,6 +18,7 @@ export default function Home({ params }: Props) {
             <h4>H4 headline</h4>
             <p>Paragraph body1</p>
             <p className="body2">Paragraph body2</p>
+            <Icon name="close" />
         </main>
     );
 }
