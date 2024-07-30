@@ -1,8 +1,9 @@
+import { ReactQueryProvider } from "@/components/providers/ReactQueryProvider";
 import { ClientIntlProvider } from "@/i18n/ClientIntlProvider";
+import { openSans } from "@/styles/fonts";
 import { ThemeProvider } from "@mui/material";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import type { Metadata } from "next";
-import { openSans } from "@/styles/fonts";
 import "../../styles/globals.css";
 import { theme } from "../../styles/theme";
 
@@ -21,9 +22,11 @@ export default function RootLayout({ params, children }: Props) {
         <html lang={params.lang} className={openSans.className}>
             <body>
                 <AppRouterCacheProvider>
-                    <ClientIntlProvider>
-                        <ThemeProvider theme={theme}>{children}</ThemeProvider>
-                    </ClientIntlProvider>
+                    <ReactQueryProvider runtimeEnvironment={process.env.RUNTIME_ENVIRONMENT ?? ""}>
+                        <ClientIntlProvider>
+                            <ThemeProvider theme={theme}>{children}</ThemeProvider>
+                        </ClientIntlProvider>
+                    </ReactQueryProvider>
                 </AppRouterCacheProvider>
             </body>
         </html>
