@@ -5,6 +5,7 @@ import { t } from "@/i18n/clientUtil";
 import { Routes } from "@/routing/Routes";
 import { useIntlRouter } from "@/routing/useIntlRouter";
 import { Button } from "@mui/material";
+import Link from "next/link";
 
 export const MuiTest = () => {
     const router = useIntlRouter();
@@ -14,13 +15,9 @@ export const MuiTest = () => {
 
     return (
         <div className="flex flex-col gap-4">
-            <Button
-                onClick={() => {
-                    router.push(Routes.DASHBOARD);
-                }}
-            >
-                Dashboard
-            </Button>
+            <Link href={router.href(Routes.DASHBOARD)}>
+                <Button>Dashboard</Button>
+            </Link>
             <Button
                 variant="contained"
                 onClick={() => {
