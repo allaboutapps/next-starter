@@ -1,3 +1,5 @@
+"use client";
+
 import { useLocale } from "@/hooks/useLocale";
 import { NavigateOptions, PrefetchOptions } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import { usePathname, useRouter } from "next/navigation";
@@ -21,7 +23,7 @@ export const useIntlRouter = () => {
         prefetch: (path: string, options?: PrefetchOptions) => router.prefetch(`/${locale}${path}`, options),
         switchLanguage: (lang: string) => router.push(`/${lang}${pathNameWithoutLocale}`),
 
-        // Return route with language prefix -> use this for <Link> hrefs
+        // Return route with language prefix -> use this for <Link> hrefs, or alternatively use <IntlLink>
         href(path: string) {
             return routeWithLocale(locale, path);
         },

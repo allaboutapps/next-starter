@@ -2,10 +2,10 @@
 
 import { useLocale } from "@/hooks/useLocale";
 import { t } from "@/i18n/clientUtil";
+import { IntlLink } from "@/routing/IntlLink";
 import { Routes } from "@/routing/Routes";
 import { useIntlRouter } from "@/routing/useIntlRouter";
 import { Button } from "@mui/material";
-import Link from "next/link";
 
 export const MuiTest = () => {
     const router = useIntlRouter();
@@ -15,9 +15,9 @@ export const MuiTest = () => {
 
     return (
         <div className="flex flex-col gap-4">
-            <Link href={router.href(Routes.DASHBOARD)}>
+            <IntlLink href={Routes.DASHBOARD}>
                 <Button>Dashboard</Button>
-            </Link>
+            </IntlLink>
             <Button
                 variant="contained"
                 onClick={() => {

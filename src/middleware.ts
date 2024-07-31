@@ -61,6 +61,8 @@ const handleLanguageNotFound = (request: NextRequest) => {
         request.nextUrl.pathname = `/${locale}${pathname}`;
     }
 
+    // If for the default language you don't want the /lang/ prefix we could use NextResponse.rewrite() instead and also have
+    // to consider this for hrefs in Next Link.
     return NextResponse.redirect(request.nextUrl);
 };
 
