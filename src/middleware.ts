@@ -4,6 +4,29 @@ import { DEFAULT_LOCALE, locales } from "./i18n/locales";
 import { match } from "@formatjs/intl-localematcher";
 import Negotiator from "negotiator";
 
+// true if string is locale
+function isValidLocale(locale: string): boolean {
+    // Regular expression for basic validation
+    const localePattern = /^[a-z]{2,3}(-[A-Z][a-z]{3})?(-[A-Z]{2})?(-[A-Za-z0-9]{5,8})?$/;
+
+    if (!localePattern.test(locale)) {
+        return false;
+    }
+
+    // Check with Intl.Locale if available
+    if (typeof Intl !== "undefined" && typeof Intl.Locale === "function") {
+        try {
+            new Intl.Locale(locale);
+            return true;
+        } catch {
+            return false;
+        }
+    }
+
+    // If Intl.Locale is not available, rely on basic pattern matching
+    return true;
+}
+
 // From request headers get best matching language
 function getLocale(request: NextRequest) {
     const negotiatorHeaders: Record<string, string> = {};
@@ -25,9 +48,19 @@ const handleLanguageNotFound = (request: NextRequest) => {
         return NextResponse.next();
     }
 
-    // Redirect to default-locale/pathname if no locale found
+    // Determine best matching locale
     const locale = getLocale(request);
-    request.nextUrl.pathname = `/${locale}${pathname}`;
+
+    // Check if first part of pathname is a valid locale
+    const pathnameLocale = pathname.split("/")[1];
+    if (isValidLocale(pathnameLocale)) {
+        // Yes -> someone tried to access a valid locale but it's not supported
+        request.nextUrl.pathname = `/${locale}/not-found`;
+    } else {
+        // No -> redirect to matching locale with pathname appended
+        request.nextUrl.pathname = `/${locale}${pathname}`;
+    }
+
     return NextResponse.redirect(request.nextUrl);
 };
 
