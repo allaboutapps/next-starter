@@ -1,6 +1,6 @@
 import { EnvVarsProvider } from "@/components/providers/EnvVarsProvider";
 import { ReactQueryProvider } from "@/components/providers/ReactQueryProvider";
-import { getEnvVarsObject } from "@/config";
+import { getPublicEnvVarsObject } from "@/config";
 import { ClientIntlProvider } from "@/i18n/ClientIntlProvider";
 import { openSans } from "@/styles/fonts";
 import { ThemeProvider } from "@mui/material";
@@ -25,7 +25,7 @@ export default function RootLayout({ params, children }: Props) {
             <body>
                 <AppRouterCacheProvider>
                     <ClientIntlProvider>
-                        <EnvVarsProvider env={getEnvVarsObject()}>
+                        <EnvVarsProvider env={getPublicEnvVarsObject()}>
                             <ReactQueryProvider>
                                 <ThemeProvider theme={theme}>{children}</ThemeProvider>
                             </ReactQueryProvider>

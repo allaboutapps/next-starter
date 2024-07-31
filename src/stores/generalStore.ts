@@ -1,4 +1,3 @@
-import { EnvVars, getEnvVarsObject } from "@/config";
 import { create } from "zustand";
 import { combine, devtools } from "zustand/middleware";
 
@@ -9,13 +8,10 @@ export const useGeneralStore = create(
         combine(
             {
                 isLoading: false,
-                envVars: getEnvVarsObject(), // allow client side access to process.env
                 _errors: [] as { message: string; error?: any }[],
             },
             (set, get) => ({
                 setIsLoading: (isLoading: boolean) => set(() => ({ isLoading })),
-
-                setEnvVars: (envVars: EnvVars) => set(() => ({ envVars })),
 
                 getError: () => (get()._errors.length > 0 ? get()._errors[0] : undefined),
 
@@ -43,6 +39,3 @@ export const useGeneralStore = create(
 
 // Just an alias for use outside of React components
 export const generalStore = useGeneralStore;
-
-// Convenience hook for accessing env vars
-export const useEnvVars = () => useGeneralStore((state) => state.envVars);

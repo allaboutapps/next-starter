@@ -21,7 +21,12 @@ since dynamic routes without `generateStaticParams()` are not supported (see htt
 ## Env vars
 - We don't use NEXT_PUBLIC_ env vars on client side, because those are baked at build time. Since we only want to build a single
 docker image we use a different approach by using server side env vars for configuration (currently only RUNTIME_ENVIRONMENT) 
-and forwarding them to our client components. For convenience you can use the `useEnvVars()` hook to get relevant environment variables.
+and forwarding them to our client components. Use the global `publicEnvVars` variable to access the env vars on the client side.
+
+## Build configuration
+- Configure build variants `hostSettings.ts`. Put in public configs like api base urls directly. Secrets that 
+are only used in react server components or API endpoints should not
+be exposed and MUST be set via environment variables (do NOT forward those to the client using `publicEnvVars`).
 
 ## Learn More
 

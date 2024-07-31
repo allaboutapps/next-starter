@@ -8,14 +8,15 @@ export const IS_SERVER = typeof window === "undefined";
 
 export const IS_BUILD = process?.env.NEXT_PHASE === PHASE_PRODUCTION_BUILD;
 
-export type EnvVars = {
+export type PublicEnvVars = {
     RUNTIME_ENVIRONMENT?: string;
 };
 
 // Helper function for injecting server env vars into client -> don't use on client. There everything will be undefined.
-// On client use "useEnvVars()" hook
-export const getEnvVarsObject = () => {
+// Use publicEnvVars instead.
+// ONLY EXPOSES PUBLIC ENVIRONMENT VARIABLES TO CLIENT (similar to NEXT_PUBLIC_*). Do not expose any sensitive information here.
+export const getPublicEnvVarsObject = () => {
     return {
         RUNTIME_ENVIRONMENT: process.env.RUNTIME_ENVIRONMENT,
-    } as EnvVars;
+    } as PublicEnvVars;
 };

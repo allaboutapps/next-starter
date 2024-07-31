@@ -10,6 +10,8 @@ export const MuiTest = () => {
     const router = useIntlRouter();
     const locale = useLocale();
 
+    // useItems();
+
     return (
         <div className="flex flex-col gap-4">
             <Button

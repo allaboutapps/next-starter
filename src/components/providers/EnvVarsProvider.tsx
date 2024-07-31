@@ -1,19 +1,12 @@
 "use client";
 
-import { EnvVars } from "@/config";
-import { useGeneralStore } from "@/stores/generalStore";
-import React, { useEffect } from "react";
+import { getPublicEnvVarsObject, PublicEnvVars } from "@/config";
+
+// Server side init via process.env
+export let publicEnvVars = getPublicEnvVarsObject();
 
 // Make server side environment variables available to client side
-export const EnvVarsProvider = ({ env, children }: { env: EnvVars; children: React.ReactNode }) => {
-    const generalStore = useGeneralStore();
-
-    useEffect(() => {
-        generalStore.setEnvVars(env);
-
-        // No exhaustive deps, because we don't want generalStore to be a dependency -> infinite loop
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [env]);
-
+export const EnvVarsProvider = ({ env, children }: { env: PublicEnvVars; children: React.ReactNode }) => {
+    publicEnvVars = env;
     return <>{children}</>;
 };

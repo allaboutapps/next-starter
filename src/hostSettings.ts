@@ -1,4 +1,4 @@
-import { generalStore } from "./stores/generalStore";
+import { publicEnvVars } from "./components/providers/EnvVarsProvider";
 
 export type HostSettings = {
     apiBaseUrl: string;
@@ -26,8 +26,8 @@ export const getHostSettings = () => {
         return allHostSettings[process.env.RUNTIME_ENVIRONMENT];
     }
 
-    // Client side has runtime environment in general store
-    const runtimeEnvironment = generalStore.getState().envVars.RUNTIME_ENVIRONMENT;
+    // Client side has runtime environment in publicEnvVars
+    const runtimeEnvironment = publicEnvVars.RUNTIME_ENVIRONMENT;
     if (runtimeEnvironment) {
         return allHostSettings[runtimeEnvironment];
     }
