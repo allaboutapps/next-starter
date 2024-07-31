@@ -1,6 +1,5 @@
-import { devtools, combine } from "zustand/middleware";
 import { create } from "zustand";
-import { DEFAULT_LOCALE, Locales } from "@/i18n/locales";
+import { combine, devtools } from "zustand/middleware";
 
 const ERROR_QUEUEING = false;
 
@@ -8,14 +7,11 @@ export const useGeneralStore = create(
     devtools(
         combine(
             {
-                locale: DEFAULT_LOCALE as Locales,
                 isLoading: false,
                 runtimeEnvironment: undefined as string | undefined,
                 _errors: [] as { message: string; error?: any }[],
             },
             (set, get) => ({
-                setLocale: (locale: Locales) => set(() => ({ locale })),
-
                 setIsLoading: (isLoading: boolean) => set(() => ({ isLoading })),
 
                 setRuntimeEnvironment: (runtimeEnvironment: string) => set(() => ({ runtimeEnvironment })),

@@ -7,7 +7,6 @@ import { IS_SERVER } from "@/config";
 import { german } from "./de";
 import { DEFAULT_LOCALE, locales, Locales } from "./locales";
 import { intlMessages, MessageIDS } from "./util";
-import { generalStore } from "@/stores/generalStore";
 
 const cache = createIntlCache();
 
@@ -16,6 +15,10 @@ export let intl: IntlShape;
 export const setLocale = (locale: Locales) => {
     if (locales.indexOf(locale) === -1) {
         locale = DEFAULT_LOCALE;
+    }
+
+    if (intl?.locale === locale) {
+        return intl;
     }
 
     intl = createIntl(
@@ -27,7 +30,6 @@ export const setLocale = (locale: Locales) => {
     );
 
     if (!IS_SERVER) {
-        generalStore.getState().setLocale(locale);
         document.documentElement.lang = locale;
     }
 

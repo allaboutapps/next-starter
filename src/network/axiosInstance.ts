@@ -1,8 +1,9 @@
 import axios from "axios";
 import createAuthRefreshInterceptor from "axios-auth-refresh";
 import { authStore, ICredentials } from "../stores/authStore";
-import { generalStore } from "../stores/generalStore";
 import { getHostSettings } from "@/hostSettings";
+import { IS_SERVER } from "@/config";
+import { getLocaleFromPathname } from "@/hooks/useLocale";
 
 ////////////////////////////////////////////////////////////////////////////
 // This file contains out basic axios client setup
@@ -33,7 +34,10 @@ axiosInstance.interceptors.request.use((request) => {
         }
 
         // Inject Accept-Language
-        request.headers.set("Accept-Language", generalStore.getState().locale);
+        if (!IS_SERVER) {
+            const locale = getLocaleFromPathname(window.location.pathname);
+            request.headers.set("Accept-Language", locale);
+        }
     }
 
     return request;
