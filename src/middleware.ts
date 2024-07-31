@@ -1,6 +1,18 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import { DEFAULT_LOCALE, locales } from "./i18n/locales";
+import { match } from "@formatjs/intl-localematcher";
+import Negotiator from "negotiator";
+
+// From request headers get best matching language
+function getLocale(request: NextRequest) {
+    const negotiatorHeaders: Record<string, string> = {};
+    request.headers.forEach((value, key) => (negotiatorHeaders[key] = value));
+    let languages = new Negotiator({ headers: negotiatorHeaders }).languages();
+
+    const lang = match(languages, locales, DEFAULT_LOCALE);
+    return lang;
+}
 
 // If invalid language provided -> redirect to default language's not found page
 const handleLanguageNotFound = (request: NextRequest) => {
@@ -13,9 +25,9 @@ const handleLanguageNotFound = (request: NextRequest) => {
         return NextResponse.next();
     }
 
-    // Redirect to default-locale/not-found if no locale is found
-    const locale = DEFAULT_LOCALE;
-    request.nextUrl.pathname = `/${locale}/not-found`;
+    // Redirect to default-locale/pathname if no locale found
+    const locale = getLocale(request);
+    request.nextUrl.pathname = `/${locale}${pathname}`;
     return NextResponse.redirect(request.nextUrl);
 };
 
