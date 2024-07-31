@@ -4,6 +4,6 @@
 - i18n auto detect via accept-language (see next intl docs)
 - better test pages (from react-starter)
 - maybe get rid of general store runtime environment? handle via global var?
-
+- update README (tiged etc.)
 
 

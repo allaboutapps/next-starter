@@ -18,6 +18,11 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 - Builds are configured as `standalone` in next.config.mjs. SPA style builds (aka `output: "export"`) are not practical,
 since dynamic routes without `generateStaticParams()` are not supported (see https://nextjs.org/docs/app/building-your-application/deploying/static-exports#unsupported-features). This limitation would not allow any detail sites like `product/[productId]` because those cannot be generated statically.
 
+## Env vars
+- We don't use NEXT_PUBLIC_ env vars on client side, because those are baked at build time. Since we only want to build a single
+docker image we use a different approach by using server side env vars for configuration (currently only RUNTIME_ENVIRONMENT) 
+and forwarding them to our client components. For convenience you can use the `useEnvVars()` hook to get relevant environment variables.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

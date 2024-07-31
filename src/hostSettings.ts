@@ -6,16 +6,16 @@ export type HostSettings = {
 
 const allHostSettings: Record<string, HostSettings> = {
     localhost: {
-        apiBaseUrl: "LOCALHOST API BASE URL (usually any of the ones below)",
+        apiBaseUrl: "https://LOCALHOST_API_BASE_URL", // usually any of the ones below
     },
     dev: {
-        apiBaseUrl: "DEV API BASE URL",
+        apiBaseUrl: "https://DEV_API_BASE_URL",
     },
     staging: {
-        apiBaseUrl: "STAGING API BASE URL",
+        apiBaseUrl: "https://STAGING_API_BASE_URL",
     },
     prod: {
-        apiBaseUrl: "PROD API BASE URL",
+        apiBaseUrl: "https://PROD_API_BASE_URL",
     },
 };
 
@@ -27,7 +27,7 @@ export const getHostSettings = () => {
     }
 
     // Client side has runtime environment in general store
-    const runtimeEnvironment = generalStore.getState().runtimeEnvironment;
+    const runtimeEnvironment = generalStore.getState().envVars.RUNTIME_ENVIRONMENT;
     if (runtimeEnvironment) {
         return allHostSettings[runtimeEnvironment];
     }
