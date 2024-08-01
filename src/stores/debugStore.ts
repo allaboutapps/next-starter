@@ -10,8 +10,6 @@ export const useDebugStore = create(
                 {
                     enabled: false,
 
-                    stringKeysVisible: false,
-
                     reactQueryDevtoolsEnabled: false,
 
                     dialogOpen: false,
@@ -19,7 +17,6 @@ export const useDebugStore = create(
                 },
                 (set) => ({
                     enable: (enabled: boolean) => set(() => ({ enabled })),
-                    showStringKeys: (show: boolean) => set(() => ({ stringKeysVisible: show })),
                     enableReactQueryDevtools: (enabled: boolean) => set(() => ({ reactQueryDevtoolsEnabled: enabled })),
 
                     openDialog: () => set(() => ({ dialogOpen: true })),

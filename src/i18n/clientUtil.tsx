@@ -1,9 +1,8 @@
 "use client";
 
+import { IS_SERVER } from "@/config";
 import { PrimitiveType } from "intl-messageformat";
 import { createIntl, createIntlCache, FormattedMessage, IntlShape } from "react-intl";
-// import { debugStore } from "../stores/debugStore";
-import { IS_SERVER } from "@/config";
 import { german } from "./de";
 import { DEFAULT_LOCALE, locales, Locales } from "./locales";
 import { intlMessages, MessageIDS } from "./util";
@@ -37,9 +36,12 @@ export const setLocale = (locale: Locales) => {
     return intl;
 };
 
+function showStringKeys() {
+    return !IS_SERVER && window.location.search.includes("showStringKeys");
+}
+
 function returnString(messageId: MessageIDS, translation: string) {
-    const showStringKeys = false; // debugStore.getState().stringKeysVisible;
-    return showStringKeys ? `${String(messageId)} (${translation})` : translation;
+    return showStringKeys() ? `${String(messageId)} (${translation})` : translation;
 }
 
 // Detailed explanation of how the typings below work:
@@ -94,8 +96,7 @@ export function tHtml<ID extends MessageIDS, Params extends ParamsForID<ID>>(
         : [messageId: ID, values: Params]
 ) {
     const [messageId, values] = parameters;
-    const showStringKeys = false; // debugStore.getState().stringKeysVisible;
-    return showStringKeys ? (
+    return showStringKeys() ? (
         `${String(messageId)} (${intl.formatMessage({ id: messageId })})`
     ) : (
         <FormattedMessage

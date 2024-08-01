@@ -1,3 +1,4 @@
+import { DebugProvider } from "@/components/providers/DebugProvider";
 import { EnvVarsProvider } from "@/components/providers/EnvVarsProvider";
 import { ReactQueryProvider } from "@/components/providers/ReactQueryProvider";
 import { getPublicEnvVarsObject } from "@/config";
@@ -25,11 +26,13 @@ export default function RootLayout({ params, children }: Props) {
             <body>
                 <AppRouterCacheProvider>
                     <ClientIntlProvider>
-                        <EnvVarsProvider env={getPublicEnvVarsObject()}>
-                            <ReactQueryProvider>
-                                <ThemeProvider theme={theme}>{children}</ThemeProvider>
-                            </ReactQueryProvider>
-                        </EnvVarsProvider>
+                        <DebugProvider>
+                            <EnvVarsProvider env={getPublicEnvVarsObject()}>
+                                <ReactQueryProvider>
+                                    <ThemeProvider theme={theme}>{children}</ThemeProvider>
+                                </ReactQueryProvider>
+                            </EnvVarsProvider>
+                        </DebugProvider>
                     </ClientIntlProvider>
                 </AppRouterCacheProvider>
             </body>

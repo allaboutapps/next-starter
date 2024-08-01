@@ -1,7 +1,7 @@
+import { Icon } from "@/components/Icon";
 import { Locales } from "@/i18n/locales";
 import { tServer } from "@/i18n/util";
 import { MuiTest } from "./MuiTest";
-import { Icon } from "@/components/Icon";
 
 type Props = {
     params: { lang: Locales };
