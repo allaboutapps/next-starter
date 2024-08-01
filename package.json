@@ -10,6 +10,8 @@
     "start": "next start",
     "build:local": "next build && cp -R .next/static .next/standalone/.next",
     "start:local": "RUNTIME_ENVIRONMENT=localhost node .next/standalone/server.js",
+    "docker:build": "docker build . --build-arg NEXT_PUBLIC_COMMIT_HASH=happy-commit-hash -t aaa-next-starter",
+    "docker:run": "docker run -p 3000:3000 aaa-next-starter",
     "lint": "next lint",
     "disable-telemetry": "next telemetry disable",
     "ts": "tsc --noEmit --incremental --preserveWatchOutput --pretty",
