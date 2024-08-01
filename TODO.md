@@ -1,6 +1,7 @@
-- add tests
-- add back show string keys and other debug functions (e.g. debugLog)
 - better test pages (from react-starter)
+- add tests
 - update README (tiged etc.)
+- commit hash in head
+
 
 

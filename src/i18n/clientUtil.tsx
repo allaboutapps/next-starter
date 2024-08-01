@@ -9,7 +9,7 @@ import { intlMessages, MessageIDS } from "./util";
 
 const cache = createIntlCache();
 
-export let intl: IntlShape;
+export let intl: IntlShape & { showStringKeys?: boolean };
 
 export const setLocale = (locale: Locales) => {
     if (locales.indexOf(locale) === -1) {
@@ -36,12 +36,8 @@ export const setLocale = (locale: Locales) => {
     return intl;
 };
 
-function showStringKeys() {
-    return !IS_SERVER && window.location.search.includes("showStringKeys");
-}
-
 function returnString(messageId: MessageIDS, translation: string) {
-    return showStringKeys() ? `${String(messageId)} (${translation})` : translation;
+    return intl.showStringKeys ? `${String(messageId)} (${translation})` : translation;
 }
 
 // Detailed explanation of how the typings below work:
@@ -96,7 +92,7 @@ export function tHtml<ID extends MessageIDS, Params extends ParamsForID<ID>>(
         : [messageId: ID, values: Params]
 ) {
     const [messageId, values] = parameters;
-    return showStringKeys() ? (
+    return intl.showStringKeys ? (
         `${String(messageId)} (${intl.formatMessage({ id: messageId })})`
     ) : (
         <FormattedMessage

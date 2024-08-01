@@ -4,10 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "RUNTIME_ENVIRONMENT=localhost concurrently -n NEXT,TS -c grey,green \"next dev\" \"npm run ts:watch\"",
+    "staging": "RUNTIME_ENVIRONMENT=staging concurrently -n NEXT,TS -c grey,green \"next dev\" \"npm run ts:watch\"",
+    "prod": "RUNTIME_ENVIRONMENT=prod concurrently -n NEXT,TS -c grey,green \"next dev\" \"npm run ts:watch\"",
     "build": "next build",
     "start": "next start",
     "build:local": "next build && cp -R .next/static .next/standalone/.next",
-    "start:local": "node .next/standalone/server.js",
+    "start:local": "RUNTIME_ENVIRONMENT=localhost node .next/standalone/server.js",
     "lint": "next lint",
     "disable-telemetry": "next telemetry disable",
     "ts": "tsc --noEmit --incremental --preserveWatchOutput --pretty",

@@ -1,6 +1,7 @@
 "use client";
 
 import { useLocale } from "@/hooks/useLocale";
+import { useSearchParams } from "next/navigation";
 import { RawIntlProvider } from "react-intl";
 import { setLocale } from "./clientUtil";
 
@@ -8,6 +9,11 @@ import { setLocale } from "./clientUtil";
 export const ClientIntlProvider = ({ children }: { children: React.ReactNode }) => {
     const locale = useLocale();
     const intl = setLocale(locale);
+
+    // Inject showStringKeys into the intl object
+    const searchParams = useSearchParams();
+    const showStringKeys = searchParams.get("showStringKeys");
+    intl.showStringKeys = showStringKeys === "true";
 
     return (
         <RawIntlProvider value={intl} key={locale}>
