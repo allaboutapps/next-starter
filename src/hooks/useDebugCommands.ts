@@ -10,22 +10,41 @@ export function useDebugCommands() {
         return;
     }
 
+    const w = window as any;
+
+    const commands = {
+        debugShowStringKeys: (enabled: boolean) => {
+            const url = new URL(window.location.href);
+            const searchParams = new URLSearchParams(url.search);
+            const showStringKeys = searchParams.get("showStringKeys");
+            let changed = false;
+            if (showStringKeys && !enabled) {
+                searchParams.delete("showStringKeys");
+                changed = true;
+            }
+            if (!showStringKeys && enabled) {
+                searchParams.set("showStringKeys", "true");
+                changed = true;
+            }
+
+            if (changed) {
+                url.search = searchParams.toString();
+
+                // Now navigate to new URL
+                window.location.href;
+            }
+        },
+        debugEnable: enableDebug,
+        debugHelp: () => {
+            console.log("Available debug commands:");
+            console.log("    debugShowStringKeys(enabled: boolean) - Show string keys instead of translations");
+            console.log("    debugEnable(enabled: boolean) - Enable or disable debug mode");
+        },
+    };
+
     // Bind debug commands to window object
     // Use syntax debugXyz() when adding new commands
-    (window as any).debugShowStringKeys = () => {
-        // toggle showStringKeys query param
-        const url = new URL(window.location.href);
-        const searchParams = new URLSearchParams(url.search);
-        const showStringKeys = searchParams.get("showStringKeys");
-        if (showStringKeys) {
-            searchParams.delete("showStringKeys");
-        } else {
-            searchParams.set("showStringKeys", "true");
-        }
-        url.search = searchParams.toString();
-
-        // Now navigate to new URL
-        window.location.href = url.toString();
-    };
-    (window as any).debugEnable = enableDebug;
+    for (const [key, value] of Object.entries(commands)) {
+        w[key] = value;
+    }
 }
