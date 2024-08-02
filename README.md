@@ -48,8 +48,12 @@ Icons are located and defined in `src/component/ui/Icon.tsx`.
 
 To add new ones following steps are necessary:
 
-* Copy SVG content
-* Add content to path, set filename (Replace <svg> with a <g> if you want to set transformations for all child elements)
-* Camel case the attributes inside the SVG
+- Copy SVG content
+- Add content to path, set filename (Replace <svg> with a <g> if you want to set transformations for all child elements)
+- Camel case the attributes inside the SVG
+
+## Licenses
+You can generate a file containing used third party licenses using `yarn license-check`. **CC-BY-4.0** is included because of NextJS including caniuse-lite which is using CC-BY-4.0. So the license file is mandatory for attribution. 
+`yarn build` will automatically generate a license file.
 
 
