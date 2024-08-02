@@ -66,9 +66,8 @@ const refreshAuthLogic = async (failedRequest: any) => {
             if (tokenRefreshResponse) {
                 setCredentials(tokenRefreshResponse.data);
 
-                failedRequest.response.config.headers[
-                    "Authorization"
-                ] = `Bearer ${tokenRefreshResponse.data.access_token}`;
+                failedRequest.response.config.headers["Authorization"] =
+                    `Bearer ${tokenRefreshResponse.data.access_token}`;
 
                 console.log("%cRefreshing access token done.", "background: #eee; color: #666;");
             } else {

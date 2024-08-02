@@ -3,9 +3,11 @@
 import { IS_SERVER } from "@/config";
 import { PrimitiveType } from "intl-messageformat";
 import { createIntl, createIntlCache, FormattedMessage, IntlShape } from "react-intl";
-import { german } from "./de";
 import { DEFAULT_LOCALE, locales, Locales } from "./locales";
 import { intlMessages, MessageIDS } from "./util";
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { german } from "./de";
 
 const cache = createIntlCache();
 
@@ -53,11 +55,12 @@ type Placeholders<Translation extends string> = Translation extends `${string}{$
 /**
  * Converts the union type "param1" | "param2" to an object type { param1: PrimitiveType, param2: PrimitiveType }
  */
-type ParamsForTranslation<Translation extends string> = Placeholders<Translation> extends never
-    ? never
-    : {
-          [Key in Placeholders<Translation>]: PrimitiveType;
-      };
+type ParamsForTranslation<Translation extends string> =
+    Placeholders<Translation> extends never
+        ? never
+        : {
+              [Key in Placeholders<Translation>]: PrimitiveType;
+          };
 
 type TranslationForID<ID extends MessageIDS> = (typeof german)[ID];
 

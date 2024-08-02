@@ -31,7 +31,7 @@ function isValidLocale(locale: string): boolean {
 function getLocale(request: NextRequest) {
     const negotiatorHeaders: Record<string, string> = {};
     request.headers.forEach((value, key) => (negotiatorHeaders[key] = value));
-    let languages = new Negotiator({ headers: negotiatorHeaders }).languages();
+    const languages = new Negotiator({ headers: negotiatorHeaders }).languages();
 
     const lang = match(languages, locales, DEFAULT_LOCALE);
     return lang;

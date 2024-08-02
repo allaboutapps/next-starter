@@ -1,6 +1,6 @@
 import * as config from "../config";
 
-function nilLog(message?: any, ...optionalParams: any[]) {
+function nilLog(_message?: any, ..._optionalParams: any[]) {
     // pass
 }
 
