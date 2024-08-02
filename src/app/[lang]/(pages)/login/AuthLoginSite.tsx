@@ -14,6 +14,8 @@ import { AxiosError } from "axios";
 import * as React from "react";
 import { useForm } from "react-hook-form";
 import * as Yup from "yup";
+import logo from "../../../../../public/images/logo.png";
+import Image from "next/image";
 
 interface LoginValues {
     email: string;
@@ -82,6 +84,7 @@ export const AuthLoginSite = () => {
                 padding: 24,
             }}
         >
+            <Image src={logo} alt="Logo" width={200} />
             <div
                 style={{
                     background: "#fff",
@@ -115,6 +118,7 @@ export const AuthLoginSite = () => {
                         label={t("screen.login.form.email.label")}
                         type="email"
                         autoComplete="username"
+                        required
                     />
 
                     <CustomInputField
@@ -123,6 +127,7 @@ export const AuthLoginSite = () => {
                         label={t("screen.login.form.password.label")}
                         type="password"
                         autoComplete="current-password"
+                        required
                     />
 
                     {error && <div style={{ color: Colors.ERROR, fontSize: 14 }}>{error}</div>}
