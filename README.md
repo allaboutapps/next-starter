@@ -62,4 +62,18 @@ You could additionally have an asset folder per language which gives you the abi
 You can generate a file containing used third party licenses using `yarn license-check`. **CC-BY-4.0** is included because of NextJS including caniuse-lite which is using CC-BY-4.0. So the license file is mandatory for attribution. 
 `yarn build` will automatically generate a license file.
 
+## Runtime base path changes
+Projects built using this template assume being served at domain root. E.g. `my-project.com/`. If you want to
+serve in a subfolder like `my-domain.com/my-project` then you have to configure the `basePath` variable in
+`next.config.mjs`.
+
+**Some caveats:** You might need to consider some changes with e.g. linked images, also i18n related redirects in `middleware.ts` might have to be adapted.
+
+Currently this template **does not support changing the base path at runtime**. Build time base path changes are supported
+by NextJS directly in `next.config.mjs` using the `basePath` variable which is consumed at **build time**. So you'd need
+a separate build for each base path. See discussion here https://github.com/vercel/next.js/discussions/41769.
+
+Should you absolutely need a runtime configurable base path in your project then consider this approach (works with
+Next 14, but could break in future versions). https://github.com/vercel/next.js/discussions/41769#discussioncomment-9329938
+
 
