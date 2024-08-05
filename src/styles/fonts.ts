@@ -6,12 +6,12 @@ export const openSans = localFont({
         {
             style: "normal",
             weight: "400",
-            path: "../../public/fonts/open-sans-v34-latin-regular.woff2",
+            path: "../../public/assets/fonts/open-sans-v34-latin-regular.woff2",
         },
         {
             style: "bold",
             weight: "700",
-            path: "../../public/fonts/open-sans-v34-latin-700.woff2",
+            path: "../../public/assets/fonts/open-sans-v34-latin-700.woff2",
         },
     ],
 });

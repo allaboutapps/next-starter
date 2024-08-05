@@ -9,7 +9,7 @@
     "build": "yarn license-check && next build",
     "start": "next start",
     "codegen": "./scripts/swagger-codegen.sh",
-    "build:local": "yarn build && cp -R .next/static .next/standalone/.next",
+    "build:local": "yarn build && cp -R .next/static .next/standalone/.next && cp -R public .next/standalone",
     "start:local": "RUNTIME_ENVIRONMENT=localhost node .next/standalone/server.js",
     "docker:build": "docker build . --build-arg NEXT_PUBLIC_COMMIT_HASH=happy-commit-hash -t aaa-next-starter",
     "docker:run": "docker run -p 3000:3000 aaa-next-starter",
@@ -20,7 +20,7 @@
     "disable-telemetry": "next telemetry disable",
     "ts": "tsc --noEmit --incremental --preserveWatchOutput --pretty",
     "ts:watch": "npm run ts -- --watch --project tsconfig.watch.json",
-    "license-check": "license-checker --production --onlyAllow \"MIT;BSD-3-Clause;Apache-2.0;ISC;0BSD;Unlicense;UNLICENSED;CC-BY-4.0\" --out ./public/third-party-licenses.txt"
+    "license-check": "license-checker --production --onlyAllow \"MIT;BSD-3-Clause;Apache-2.0;ISC;0BSD;Unlicense;UNLICENSED;CC-BY-4.0\" --out ./public/assets/third-party-licenses.txt"
   },
   "dependencies": {
     "@emotion/cache": "^11.13.1",

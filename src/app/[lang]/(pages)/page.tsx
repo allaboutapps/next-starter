@@ -2,6 +2,7 @@ import { Icon } from "@/components/Icon";
 import { Locales } from "@/i18n/locales";
 import { tServer } from "@/i18n/util";
 import { MuiTest } from "./MuiTest";
+import Link from "next/link";
 
 type Props = {
     params: { lang: Locales };
@@ -19,6 +20,9 @@ export default function Home({ params }: Props) {
             <p>Paragraph body1</p>
             <p className="body2">Paragraph body2</p>
             <Icon name="close" />
+            <Link href="/assets/third-party-licenses.txt" locale={false}>
+                Licenses
+            </Link>
         </main>
     );
 }

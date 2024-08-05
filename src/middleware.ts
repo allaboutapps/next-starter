@@ -41,6 +41,7 @@ function getLocale(request: NextRequest) {
 const handleLanguageNotFound = (request: NextRequest) => {
     // Check if there is any supported locale in the pathname
     const { pathname } = request.nextUrl;
+
     const pathnameHasLocale = locales.some((locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`);
 
     // Locale found -> continue
@@ -87,7 +88,8 @@ export const config = {
          * - _next/static (static files)
          * - _next/image (image optimization files)
          * - favicon.ico (favicon file)
+         * - assets (public/assets)
          */
-        "/((?!api|_next|favicon.ico).*)",
+        "/((?!api|_next|favicon.ico|assets).*)",
     ],
 };

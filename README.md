@@ -52,6 +52,12 @@ To add new ones following steps are necessary:
 - Add content to path, set filename (Replace <svg> with a <g> if you want to set transformations for all child elements)
 - Camel case the attributes inside the SVG
 
+## Assets
+All assets are put into `/public/assets`. No files should be put into `/public/`root. This is because of localization middleware
+prepending locales automatically (see https://github.com/vercel/next.js/discussions/36308)
+
+You could additionally have an asset folder per language which gives you the ability to localize assets as well. See https://github.com/vercel/next.js/discussions/36308#discussioncomment-8645411.
+
 ## Licenses
 You can generate a file containing used third party licenses using `yarn license-check`. **CC-BY-4.0** is included because of NextJS including caniuse-lite which is using CC-BY-4.0. So the license file is mandatory for attribution. 
 `yarn build` will automatically generate a license file.
