@@ -1,6 +1,6 @@
 "use client";
 
-import { IS_SERVER } from "@/config";
+import { IS_SERVER } from "../config";
 import { PrimitiveType } from "intl-messageformat";
 import { createIntl, createIntlCache, FormattedMessage, IntlShape } from "react-intl";
 import { DEFAULT_LOCALE, locales, Locales } from "./locales";

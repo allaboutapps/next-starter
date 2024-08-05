@@ -10,6 +10,8 @@
     "start": "next start",
     "build:local": "yarn build && cp -R .next/static .next/standalone/.next && cp -R public .next/standalone",
     "start:local": "RUNTIME_ENVIRONMENT=localhost node .next/standalone/server.js",
+    "test": "vitest --passWithNoTests",
+    "test:ci": "CI=true yarn test",
     "format": "prettier --write '**/*.{js,jsx,ts,tsx,gql,css,json,html,htm}'",
     "codegen": "./scripts/swagger-codegen.sh",
     "lint:google-fonts": "./scripts/lint-google-fonts.sh",
@@ -46,20 +48,24 @@
     "zustand": "^4.5.4"
   },
   "devDependencies": {
+    "@testing-library/react": "^16.0.0",
     "@types/negotiator": "^0.6.3",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@typescript-eslint/eslint-plugin": "^8.0.0",
     "@typescript-eslint/parser": "^8.0.0",
+    "@vitejs/plugin-react": "^4.3.1",
     "concurrently": "^8.2.2",
     "eslint": "^8",
     "eslint-config-next": "14.2.5",
     "eslint-config-prettier": "^9.1.0",
+    "happy-dom": "^14.12.3",
+    "husky": "^8.0.3",
     "license-checker": "^25.0.1",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "typescript": "^5",
-    "husky": "^8.0.3"
+    "vitest": "^2.0.5"
   }
 }
