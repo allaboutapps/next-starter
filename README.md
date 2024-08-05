@@ -76,4 +76,8 @@ a separate build for each base path. See discussion here https://github.com/verc
 Should you absolutely need a runtime configurable base path in your project then consider this approach (works with
 Next 14, but could break in future versions). https://github.com/vercel/next.js/discussions/41769#discussioncomment-9329938
 
+## Testing
+Unit tests via `vitest` are supported. Run them via `yarn test` locally and `yarn test:ci` in your CI environment.
+
+
 
