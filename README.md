@@ -45,7 +45,7 @@ be exposed and MUST be set via environment variables (do NOT forward those to th
 
 ### Debug string keys
 
-When you have many strings in your application it can be hard for QA and translators to figure out which string key in your language file (e.g. en.json) is used for which on screen text.
+When you have many strings in your application it can be hard for QA and translators to figure out which string key in your language file (e.g. en.ts) is used for which on screen text.
 
 For this you can open your browser console (CMD+ALT+i in Mac Chrome or CTRL+SHIFT+i in Windows Chrome), enter `debugShowStringKeys(true)` and then press RETURN. This will display the string keys additionally to the translated text. Toggle this off again by using `debugShowStringKeys(false)`.
 
@@ -64,7 +64,7 @@ To add new ones following steps are necessary:
 - Camel case the attributes inside the SVG
 
 ## Assets
-All assets are put into `/public/assets`. No files should be put into `/public/`root. This is because of localization middleware
+All assets are put into `/public/assets`. No files should be put into `/public/` root. This is because of localization middleware
 prepending locales automatically (see https://github.com/vercel/next.js/discussions/36308)
 
 You could additionally have an asset folder per language which gives you the ability to localize assets as well. See https://github.com/vercel/next.js/discussions/36308#discussioncomment-8645411.
