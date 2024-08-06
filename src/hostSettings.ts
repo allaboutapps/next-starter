@@ -6,6 +6,7 @@ export type HostSettings = {
     graphQlToken: string;
     craftBaseUrl: string;
     nextBaseUrl: string;
+    revalidationAccessToken: string;
 };
 
 const allHostSettings: Record<string, HostSettings> = {
@@ -15,6 +16,7 @@ const allHostSettings: Record<string, HostSettings> = {
         graphQlEndpoint: "https://LOCALHOST_CRAFT_BASE_URL/graphql/api",
         graphQlToken: "LOCAL_CRAFT_GQL_TOKEN",
         nextBaseUrl: "https://LOCALHOST_NEXT_BASE_URL",
+        revalidationAccessToken: process.env.REVALIDATION_TOKEN ?? "795e8105-0e5f-4656-bc62-8b202df3b52b",
     },
     dev: {
         apiBaseUrl: "https://DEV_API_BASE_URL",
@@ -22,6 +24,7 @@ const allHostSettings: Record<string, HostSettings> = {
         graphQlEndpoint: "https://DEV_CRAFT_BASE_URL/graphql/api",
         graphQlToken: "DEV_CRAFT_GQL_TOKEN",
         nextBaseUrl: "https://DEV_NEXT_BASE_URL",
+        revalidationAccessToken: process.env.REVALIDATION_TOKEN ?? "",
     },
     staging: {
         apiBaseUrl: "https://STAGING_API_BASE_URL",
@@ -29,6 +32,7 @@ const allHostSettings: Record<string, HostSettings> = {
         graphQlEndpoint: "https://STAGING_CRAFT_BASE_URL/graphql/api",
         graphQlToken: "STAGING_CRAFT_GQL_TOKEN",
         nextBaseUrl: "https://STAGING_NEXT_BASE_URL",
+        revalidationAccessToken: process.env.REVALIDATION_TOKEN ?? "",
     },
     prod: {
         apiBaseUrl: "https://PROD_API_BASE_URL",
@@ -36,6 +40,7 @@ const allHostSettings: Record<string, HostSettings> = {
         graphQlEndpoint: "https://PROD_CRAFT_BASE_URL/graphql/api",
         graphQlToken: "PROD_CRAFT_GQL_TOKEN",
         nextBaseUrl: "https://PROD_NEXT_BASE_URL",
+        revalidationAccessToken: process.env.REVALIDATION_TOKEN ?? "",
     },
 };
 

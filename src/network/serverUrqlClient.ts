@@ -1,6 +1,6 @@
+import { getHostSettings } from "@/hostSettings";
+import { CraftPreview } from "@/util/craft";
 import { ClientOptions, createClient, fetchExchange } from "@urql/next";
-import { getHostSettings } from "../hostSettings";
-import { CraftPreview } from "../util/craft";
 
 // This is the client used by RSC (react server components)
 export const buildServerUrqlClient = ({ craftPreview }: { craftPreview?: CraftPreview } = {}) => {

@@ -1,6 +1,6 @@
 // import { IS_DEV } from "@/config";
-import { HostSettings } from "../hostSettings";
 
+import { HostSettings } from "@/hostSettings";
 import { Client, SSRExchange, cacheExchange, createClient, fetchExchange, ssrExchange } from "@urql/next";
 
 // This is used by the browser and during SSR

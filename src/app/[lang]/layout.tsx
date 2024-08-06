@@ -1,6 +1,9 @@
 import { DebugProvider } from "@/components/providers/DebugProvider";
 import { EnvVarsProvider } from "@/components/providers/EnvVarsProvider";
+import { GraphQlProvider } from "@/components/providers/GraphQlProvider";
 import { ReactQueryProvider } from "@/components/providers/ReactQueryProvider";
+import { ErrorToast } from "@/components/ui/ErrorToast";
+import { LoadingOverlay } from "@/components/ui/LoadingOverlay";
 import { getPublicEnvVarsObject } from "@/config";
 import { ClientIntlProvider } from "@/i18n/ClientIntlProvider";
 import { openSans } from "@/styles/fonts";
@@ -9,8 +12,6 @@ import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import type { Metadata } from "next";
 import "../../styles/globals.css";
 import { theme } from "../../styles/theme";
-import { LoadingOverlay } from "@/components/ui/LoadingOverlay";
-import { ErrorToast } from "@/components/ui/ErrorToast";
 
 export const metadata: Metadata = {
     title: "aaa next-starter",
@@ -30,13 +31,15 @@ export default function RootLayout({ params, children }: Props) {
                     <ClientIntlProvider>
                         <DebugProvider>
                             <EnvVarsProvider env={getPublicEnvVarsObject()}>
-                                <ReactQueryProvider>
-                                    <ThemeProvider theme={theme}>
-                                        {children}
-                                        <LoadingOverlay />
-                                        <ErrorToast />
-                                    </ThemeProvider>
-                                </ReactQueryProvider>
+                                <GraphQlProvider>
+                                    <ReactQueryProvider>
+                                        <ThemeProvider theme={theme}>
+                                            {children}
+                                            <LoadingOverlay />
+                                            <ErrorToast />
+                                        </ThemeProvider>
+                                    </ReactQueryProvider>
+                                </GraphQlProvider>
                             </EnvVarsProvider>
                         </DebugProvider>
                     </ClientIntlProvider>
