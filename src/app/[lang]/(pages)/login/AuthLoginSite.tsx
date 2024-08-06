@@ -84,6 +84,9 @@ export const AuthLoginSite = () => {
                 padding: 24,
             }}
         >
+            {/* No height param needed because image is imported.
+            Alternatively you can provide static images with src="/assets/images/logo.png"
+            but then the normal NextJS Image rules apply (height, width needed) */}
             <Image src={logo} alt="Logo" width={200} />
             <div
                 style={{
