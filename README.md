@@ -2,7 +2,7 @@
 
 This is the [allaboutapps](https://allaboutapps.at/) TypeScript template for React NextJS applications.
 
-**This template requires a minimum Node version of 18. If you are using nvm, then run `nvm use` to use the correct version.**
+**This template requires a Node version of 18. If you are using nvm, then run `nvm use` to use the correct version. If 18 is not installed run `nvm install`.**
 
 ## How to use this template
 - run `npm_config_yes=true npx tiged github:allaboutapps/next-starter my-project-name` to scaffold a new app, where `my-project-name` is the name of the target folder where you want to create your project.
