@@ -29,7 +29,7 @@ export async function GET(request: NextRequest) {
         };
     }
 
-    /* Needs generated types -> comment in when used in real project
+    /* CRAFT_COMMENT_IN Needs generated types -> comment in when used in real project
     // check if the requested entry behind the url and site setting really exists
     const page = await checkEntryExists(lang, uri, preview);
 
