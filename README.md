@@ -12,6 +12,9 @@ This is the [allaboutapps](https://allaboutapps.at/) TypeScript template for Rea
 - run `yarn && yarn dev` to install packages and start the dev server
 - You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
+## CraftCMS projects
+For headless CraftCMS projects there is a separate branch. Use `npm_config_yes=true npx tiged github:allaboutapps/next-starter#craft my-project-name` for scaffolding. **ATTENTION: this is mainly provided for allaboutapps internal use**
+
 ## What's included?
 - We strive to support Visual Studio Code as much as possible.
 - Automatically installs compatible versions of popular libraries within our organization.
