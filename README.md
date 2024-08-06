@@ -34,7 +34,7 @@ and forwarding them to our client components. Use the global `publicEnvVars` var
 - `RUNTIME_ENVIRONMENT`
 
 ## Build configuration
-- Configure build variants `hostSettings.ts`. Put in public configs like api base urls directly. Secrets that 
+- Configure build variants in `hostSettings.ts`. Put in public configs like api base urls directly. Secrets that 
 are only used in react server components or API endpoints should not
 be exposed and MUST be set via environment variables (do NOT forward those to the client using `publicEnvVars`).
 
