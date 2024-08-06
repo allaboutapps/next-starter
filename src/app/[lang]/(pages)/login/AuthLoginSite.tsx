@@ -14,7 +14,7 @@ import { AxiosError } from "axios";
 import * as React from "react";
 import { useForm } from "react-hook-form";
 import * as Yup from "yup";
-import logo from "../../../../../public/assets/images/logo.png";
+import logo from "/public/assets/images/logo.png";
 import Image from "next/image";
 
 interface LoginValues {
