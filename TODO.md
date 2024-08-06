@@ -1,5 +1,5 @@
-- better test pages (from react-starter)
-- update README (tiged etc.)
+- add branch with GQL
+
 
 
 

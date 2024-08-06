@@ -8,6 +8,8 @@ export const IS_SERVER = typeof window === "undefined";
 
 export const IS_BUILD = process?.env.NEXT_PHASE === PHASE_PRODUCTION_BUILD;
 
+export const LOADING_INDICATOR_DELAY_MS = 300;
+
 export type PublicEnvVars = {
     RUNTIME_ENVIRONMENT?: string;
 };

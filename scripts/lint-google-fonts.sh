@@ -1,5 +1,5 @@
 #!/bin/bash
-files="$(grep -rwl "." --exclude-dir="node_modules" --include=\*.{js,jsx,ts,tsx,gql,css,json,html,htm} -e "fonts.googleapis.com")"
+files="$(grep -rwl "." --exclude-dir="node_modules" --exclude-dir=".next" --include=\*.{js,jsx,ts,tsx,gql,css,json,html,htm} -e "fonts.googleapis.com")"
 if [ -z "$files" ]
 then
    echo "OK";

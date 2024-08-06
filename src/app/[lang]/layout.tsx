@@ -9,6 +9,8 @@ import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import type { Metadata } from "next";
 import "../../styles/globals.css";
 import { theme } from "../../styles/theme";
+import { LoadingOverlay } from "@/components/ui/LoadingOverlay";
+import { ErrorToast } from "@/components/ui/ErrorToast";
 
 export const metadata: Metadata = {
     title: "aaa next-starter",
@@ -29,7 +31,11 @@ export default function RootLayout({ params, children }: Props) {
                         <DebugProvider>
                             <EnvVarsProvider env={getPublicEnvVarsObject()}>
                                 <ReactQueryProvider>
-                                    <ThemeProvider theme={theme}>{children}</ThemeProvider>
+                                    <ThemeProvider theme={theme}>
+                                        {children}
+                                        <LoadingOverlay />
+                                        <ErrorToast />
+                                    </ThemeProvider>
                                 </ReactQueryProvider>
                             </EnvVarsProvider>
                         </DebugProvider>

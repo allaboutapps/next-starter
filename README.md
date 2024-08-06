@@ -9,12 +9,20 @@ This is the [allaboutapps](https://allaboutapps.at/) TypeScript template for Rea
 - run `yarn && yarn dev` to install packages and start the dev server
 - You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
+## What's included?
+- We strive to support Visual Studio Code as much as possible.
+- Automatically installs compatible versions of popular libraries within our organization.
+- Support for compile-time safe i18n through customized typings and utils in the projects.
+- Sample Login-Page in the frontend code.
+- Docker setup
+
 ## Builds
 - Builds are configured as `standalone` in next.config.mjs. SPA style builds (aka `output: "export"`) are not practical,
 since dynamic routes without `generateStaticParams()` are not supported (see https://nextjs.org/docs/app/building-your-application/deploying/static-exports#unsupported-features). This limitation would not allow any detail sites like `product/[productId]` because those cannot be generated statically.
 - Local production builds can be tested using `yarn build:local` and `yarn start:local`
 - Support for aaa build pipeline using woodpecker CI is provided in .drone.yml
 - Dockerfile ist provided and can be tested locally using `yarn docker:build` and `yarn docker:run`. The app is then reachable under [http://localhost:3000](http://localhost:3000)
+
 
 ## Env vars
 - We don't use `NEXT_PUBLIC_` env vars on client side, because those are baked at build time. Since we only want to build a single
@@ -79,5 +87,17 @@ Next 14, but could break in future versions). https://github.com/vercel/next.js/
 ## Testing
 Unit tests via `vitest` are supported. Run them via `yarn test` locally and `yarn test:ci` in your CI environment.
 
+
+## How to generate types from a Swagger specification
+
+We provide a script that lets you generate TypeScript types for a Swagger specification.
+
+### Local
+
+Run `yarn codegen local <file_name>` to generate types from a swagger file in your local repository. Note that the file needs to be located at the root folder.
+
+### Remote
+
+To use a remote source run `yarn codegen dev`. Don't forget to set a correct `BASE_URL` in 
 
 
