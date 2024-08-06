@@ -1,4 +1,4 @@
-# allaboutapps `react-starter`
+# allaboutapps `next-starter`
 
 This is the [allaboutapps](https://allaboutapps.at/) TypeScript template for React NextJS applications.
 
