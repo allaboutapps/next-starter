@@ -5,7 +5,8 @@ This is the [allaboutapps](https://allaboutapps.at/) TypeScript template for Rea
 ## How to use this template
 - run `npm_config_yes=true npx tiged github:allaboutapps/next-starter my-project-name` to scaffold a new app, where `my-project-name` is the name of the target folder where you want to create your project.
 - change the "name" to your project name in `package.json`.
-- run `git init` if you want to initialize a repository.
+- run `git init` if you want to initialize a repository. (The template comes with a pre commit hook that lints the project
+  before a commit. A repository is needed for the commit hook to install correctly.)
 - run `yarn && yarn dev` to install packages and start the dev server
 - You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
