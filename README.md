@@ -39,7 +39,7 @@ are only used in react server components or API endpoints should not
 be exposed and MUST be set via environment variables (do NOT forward those to the client using `publicEnvVars`).
 
 ## Git version
-- When the project is built in woodpecker CI, the commit hash will automatically be inserted into the <head> as comment.
+- When the project is built in woodpecker CI, the commit hash will automatically be inserted into the `<head>` as comment.
 
 ## Debug commands
 
