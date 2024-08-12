@@ -104,6 +104,15 @@ Run `yarn codegen local <file_name>` to generate types from a swagger file in yo
 
 ### Remote
 
-To use a remote source run `yarn codegen dev`. Don't forget to set a correct `BASE_URL` in 
+To use a remote source run `yarn codegen dev`. Don't forget to set a correct `BASE_URL` in `swagger-codegen.sh` which can be found in `./scripts`.
 
+## favicon and social media link icons
+Favicon can be set using `src/app/favicon.ico` bigger versions can be set using `src/app/icon.png`. Should your
+application need more versions, follow the documentation at https://nextjs.org/docs/app/api-reference/file-conventions/metadata/app-icons
+
+For social media link images you can use this: https://nextjs.org/docs/app/api-reference/file-conventions/metadata/app-icons
+
+## SEO relevant metadata files
+E.g. robots.txt, sitemap, manifest:
+See https://nextjs.org/docs/app/api-reference/file-conventions/metadata 
 
