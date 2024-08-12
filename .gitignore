@@ -37,3 +37,5 @@ next-env.d.ts
 
 # license file
 /public/assets/third-party-licenses.txt
+
+*storybook.log
