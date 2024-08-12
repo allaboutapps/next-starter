@@ -1,0 +1,55 @@
+
+# This file is used only for local testing: simulate two running app instances app1 and app2
+#
+# docker compose -f docker-compose.prod.yml up --build
+
+services:
+    app1:
+        build:
+            context: .
+            target: runner
+        expose:
+            - "3002"
+        environment:
+            # NODE_ENV: production # baked
+            PORT: 3002
+            RUNTIME_ENVIRONMENT: dev
+            REDIS_URL: "redis://redis:6379"
+            REDIS_KEY_EXPIRATION_STRATEGY: "EXAT" # Requires Redis server 6.2.0 or newer https://caching-tools.github.io/next-shared-cache/handlers/redis-strings
+            ENABLE_CACHE_ACCESS_LOG: "true"
+            ENABLE_ACCESS_LOG: "true"
+
+    app2:
+        build:
+            context: .
+            target: runner
+        expose:
+            - "3003"
+        environment:
+            # NODE_ENV: production # baked
+            PORT: 3003
+            RUNTIME_ENVIRONMENT: dev
+            REDIS_URL: "redis://redis:6379"
+            REDIS_KEY_EXPIRATION_STRATEGY: "EXAT" # Requires Redis server 6.2.0 or newer https://caching-tools.github.io/next-shared-cache/handlers/redis-strings
+            ENABLE_CACHE_ACCESS_LOG: "true"
+            ENABLE_ACCESS_LOG: "true"
+
+    nginx:
+        image: nginx:1.23
+        ports:
+            - "3001:3001"
+        volumes:
+            - ./docker-compose-nginx.conf:/etc/nginx/conf.d/default.conf
+
+    redis:
+        image: redis:6.2.14-alpine
+        expose:
+            - "6379"
+        ports:
+            - "6379:6379"
+# you may also attach locally to the running redis instance via:
+# yarn build && cp -R .next/static .next/standalone/.next && NODE_ENV=production ENABLE_CACHE_ACCESS_LOG=true ENABLE_ACCESS_LOG=true RUNTIME_ENVIRONMENT=dev REDIS_KEY_EXPIRATION_STRATEGY=EXAT REDIS_URL=redis://localhost:6379 node .next/standalone/server.js
+
+# trigger revalidation via:
+# ATTENTION: You have to provide a revalidation access token from hostSettings.ts and the uri of the page you want to revalidate!
+# curl "http://127.0.0.1:3001/api/revalidate/?site=de&uri=PAGE_YOU_WANT_TO_REVALIDATE" -w "\n" -H "Authorization: Bearer YOUR_REVALIDATION_ACCESS_TOKEN"
