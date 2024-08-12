@@ -3,10 +3,13 @@
         "next/core-web-vitals",
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
-        "eslint-config-prettier"
+        "eslint-config-prettier",
+        "plugin:storybook/recommended"
     ],
     "parser": "@typescript-eslint/parser",
-    "plugins": ["@typescript-eslint"],
+    "plugins": [
+        "@typescript-eslint"
+    ],
     "root": true,
     "parserOptions": {
         "project": "./tsconfig.json"
