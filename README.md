@@ -22,6 +22,12 @@ For headless CraftCMS projects there is a separate branch. Use `npm_config_yes=t
 - Sample Login-Page in the frontend code.
 - Docker setup
 
+## Storybook
+For developing, previewing and testing UI components we **highly recommend** using [storybook](https://storybook.js.org/). Support
+for storybook is built in. For examples how to write simple stories see `*.stories.tsx` files (e.g. `src/components/ui/Buttons.stories.tsx`).
+
+To start the storybook use `yarn storybook`.
+
 ## Builds
 - Builds are configured as `standalone` in next.config.mjs. SPA style builds (aka `output: "export"`) are not practical,
 since dynamic routes without `generateStaticParams()` are not supported (see https://nextjs.org/docs/app/building-your-application/deploying/static-exports#unsupported-features). This limitation would not allow any detail sites like `product/[productId]` because those cannot be generated statically.
@@ -116,8 +122,3 @@ For social media link images you can use this: https://nextjs.org/docs/app/api-r
 E.g. robots.txt, sitemap, manifest:
 See https://nextjs.org/docs/app/api-reference/file-conventions/metadata 
 
-## Storybook
-For developing and testing UI components we recommend using [storybook](https://storybook.js.org/). Support
-for storybook is built in. For examples how to write simple stories see `*.stories.tsx` files (e.g. `src/components/Buttons.stories.tsx`).
-
-To start the storybook use `yarn storybook`.
