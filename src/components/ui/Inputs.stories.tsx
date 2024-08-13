@@ -1,16 +1,16 @@
+import { CustomInputField } from "@/components/ui/CustomInputField";
+import { SiteContainer } from "@/components/ui/SiteContainer";
 import { tServer } from "@/i18n/util";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Meta, StoryObj } from "@storybook/react";
 import { useForm } from "react-hook-form";
 import * as Yup from "yup";
-import { CustomInputField } from "./CustomInputField";
-import { SiteContainer } from "./SiteContainer";
 
 export default {
     title: "Inputs",
 } satisfies Meta;
 
-export const Inputs: StoryObj = {
+export const EmailInput: StoryObj = {
     render: () => {
         const { control } = useForm<{ email: string }>({
             defaultValues: {
@@ -36,13 +36,9 @@ export const Inputs: StoryObj = {
                     type="email"
                     autoComplete="username"
                     required
+                    style={{ width: 300 }}
                 />
             </SiteContainer>
         );
-    },
-    parameters: {
-        nextjs: {
-            appDirectory: true,
-        },
     },
 };
