@@ -1,13 +1,13 @@
+import { Icon } from "@/components/Icon";
+import { SiteContainer } from "@/components/ui/SiteContainer";
 import { Button, IconButton } from "@mui/material";
 import { Meta, StoryObj } from "@storybook/react";
-import { SiteContainer } from "./SiteContainer";
-import { Icon } from "../Icon";
 
 export default {
     title: "Buttons",
 } satisfies Meta;
 
-export const Buttons: StoryObj = {
+export const Contained: StoryObj = {
     render: () => {
         return (
             <SiteContainer>
@@ -17,12 +17,30 @@ export const Buttons: StoryObj = {
                 <Button variant="contained" color="secondary">
                     Secondary
                 </Button>
+            </SiteContainer>
+        );
+    },
+};
+
+export const Outlined: StoryObj = {
+    render: () => {
+        return (
+            <SiteContainer>
                 <Button variant="outlined" color="primary">
                     Outlined Primary
                 </Button>
                 <Button variant="outlined" color="primary">
                     Outlined Secondary
                 </Button>
+            </SiteContainer>
+        );
+    },
+};
+
+export const Icons: StoryObj = {
+    render: () => {
+        return (
+            <SiteContainer>
                 <div className="flex gap-2 items-center">
                     Icon button:
                     <IconButton>
@@ -31,10 +49,5 @@ export const Buttons: StoryObj = {
                 </div>
             </SiteContainer>
         );
-    },
-    parameters: {
-        nextjs: {
-            appDirectory: true,
-        },
     },
 };

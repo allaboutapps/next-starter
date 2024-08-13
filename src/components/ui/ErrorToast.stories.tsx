@@ -1,14 +1,14 @@
+import { ErrorToast } from "@/components/ui/ErrorToast";
+import { SiteContainer } from "@/components/ui/SiteContainer";
 import { useGeneralStore } from "@/stores/generalStore";
 import { Button } from "@mui/material";
 import { Meta, StoryObj } from "@storybook/react";
-import { ErrorToast } from "./ErrorToast";
-import { SiteContainer } from "./SiteContainer";
 
 export default {
     title: "Error Toast",
 } satisfies Meta;
 
-export const TriggerError: StoryObj = {
+export const TriggerSingleError: StoryObj = {
     render: () => {
         const [setError] = useGeneralStore((state) => [state.setError]);
 
@@ -20,10 +20,5 @@ export const TriggerError: StoryObj = {
                 <ErrorToast />
             </SiteContainer>
         );
-    },
-    parameters: {
-        nextjs: {
-            appDirectory: true,
-        },
     },
 };

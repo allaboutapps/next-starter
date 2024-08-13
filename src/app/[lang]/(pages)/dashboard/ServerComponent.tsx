@@ -1,4 +1,3 @@
-import { Icon } from "@/components/Icon";
 import { tServer } from "@/i18n/util";
 import { PageProps } from "@/types/PageProps";
 import { debug } from "@/util/debug";
@@ -16,16 +15,5 @@ export const ServerComponent = async ({ pageProps }: { pageProps: PageProps }) =
     await sleep(100);
     debug.log("loading ServerComponent done");
 
-    return (
-        <>
-            {tServer(pageProps.params.lang, "serverComponent.text")}
-            <h1 className="text-primary">H1 headline</h1>
-            <h2>H2 headline</h2>
-            <h3>H3 headline</h3>
-            <h4>H4 headline</h4>
-            <p>Paragraph body1</p>
-            <p className="body2">Paragraph body2</p>
-            <Icon name="close" />
-        </>
-    );
+    return <>{tServer(pageProps.params.lang, "serverComponent.text")}</>;
 };
