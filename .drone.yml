@@ -227,15 +227,6 @@ pipeline:
   # DEPLOYMENT PROD --
   # ---------------------
 
-  # autodeploy if it hits the branch
-  "deploy ${DRONE_COMMIT_SHA:0:10} to ${K8S_DEPLOY_NS_PROD} (auto)":
-    <<: *K8S_DEPLOY_SETTINGS
-    namespace: ${K8S_DEPLOY_NS_PROD}
-    mgmt_deployment_yaml: namespaces/${K8S_DEPLOY_NS_PROD}/webapp.deployment.yaml
-    when:
-      branch: main
-      event: *WHEN_BUILD_EVENT
-
   # promote main through "drone deploy <repo> <build> <env>" or "woodpecker-cli deploy <repo> <build> <env>"
   "deploy ${DRONE_COMMIT_SHA:0:10} to ${K8S_DEPLOY_NS_PROD} (promote)":
     <<: *K8S_DEPLOY_SETTINGS
