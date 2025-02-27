@@ -43,4 +43,5 @@ export const german = {
     "screen.dashboard.html": "Das ist ein <b>fetter Text</b> und das ist <i>kursiv</i>",
     "test.twoParams": "Text mit {param1} und {param2}",
     "serverComponent.text": "Das ist eine React Server Komponente",
+    "search.placeholder": "Suchen...",
 } as const;

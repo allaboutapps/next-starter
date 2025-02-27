@@ -1,5 +1,3 @@
-"use client";
-
 import { SiteContainer } from "@/components/ui/SiteContainer";
 import { tServer } from "@/i18n/util";
 import { IntlLink } from "@/routing/IntlLink";
@@ -7,8 +5,8 @@ import { Routes } from "@/routing/Routes";
 import { PageProps } from "@/types/PageProps";
 import { Link } from "@mui/material";
 
-export const HomeSite = ({ pageProps }: { pageProps: PageProps }) => {
-    const lang = pageProps.params.lang;
+export const HomeSite = async ({ pageProps }: { pageProps: PageProps }) => {
+    const { lang } = await pageProps.params;
     return (
         <SiteContainer>
             <Link href={Routes.LOGIN} component={IntlLink}>
