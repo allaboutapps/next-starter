@@ -6,14 +6,19 @@ import { IntlLink } from "@/routing/IntlLink";
 import { Routes } from "@/routing/Routes";
 import { useIntlRouter } from "@/routing/useIntlRouter";
 import { useDebugStore } from "@/stores/debugStore";
-import { Button, Link } from "@mui/material";
+import { Button, Link, TextField } from "@mui/material";
 import NextLink from "next/link";
+import { useQueryState } from "nuqs";
 
 // Stuff that has to be in a client component (uses t, tHtml)
 export const ClientComponent = () => {
     const locale = useLocale();
     const router = useIntlRouter();
     const debugEnabled = useDebugStore((state) => state.enabled);
+
+    const [search, setSearch] = useQueryState("search", {
+        shallow: true,
+    });
 
     return (
         <>
@@ -37,6 +42,12 @@ export const ClientComponent = () => {
                 {t("common.licenses")}
             </Link>
             <div>{tHtml("screen.dashboard.html")}</div>
+            <TextField
+                value={search ?? ""}
+                onChange={(e) => setSearch(e.target.value || null)}
+                placeholder={t("search.placeholder")}
+            />
+            <div>Query Param {`{search : ${search}}`}</div>
         </>
     );
 };

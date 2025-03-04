@@ -41,4 +41,5 @@ export const english = {
     "addDialog.title.multi": "Add entries",
     "screen.dashboard.html": "This is <b>bold text</b> and this is <i>italic</i>",
     "serverComponent.text": "This is a react server component",
+    "search.placeholder": "Search...",
 } as const;

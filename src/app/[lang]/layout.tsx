@@ -11,6 +11,7 @@ import "../../styles/globals.css";
 import { theme } from "../../styles/theme";
 import { LoadingOverlay } from "@/components/ui/LoadingOverlay";
 import { ErrorToast } from "@/components/ui/ErrorToast";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
 
 export const metadata: Metadata = {
     title: "aaa next-starter",
@@ -18,13 +19,15 @@ export const metadata: Metadata = {
 };
 
 type Props = {
-    params: { lang: string };
+    params: Promise<{ lang: string }>;
     children: React.ReactNode;
 };
 
-export default function RootLayout({ params, children }: Props) {
+export default async function RootLayout({ params, children }: Props) {
+    const { lang } = await params;
+
     return (
-        <html lang={params.lang} className={openSans.className}>
+        <html lang={lang} className={openSans.className}>
             <body>
                 <AppRouterCacheProvider>
                     <ClientIntlProvider>
@@ -32,7 +35,7 @@ export default function RootLayout({ params, children }: Props) {
                             <EnvVarsProvider env={getPublicEnvVarsObject()}>
                                 <ReactQueryProvider>
                                     <ThemeProvider theme={theme}>
-                                        {children}
+                                        <NuqsAdapter>{children}</NuqsAdapter>
                                         <LoadingOverlay />
                                         <ErrorToast />
                                     </ThemeProvider>

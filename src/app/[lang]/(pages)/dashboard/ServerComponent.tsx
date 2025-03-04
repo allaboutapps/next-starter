@@ -10,10 +10,12 @@ import { sleep } from "@/util/helpers";
 // ATTENTION: Client components contrary to their name are still prerendered on the server.
 // So you still get the benefits of SSR.
 export const ServerComponent = async ({ pageProps }: { pageProps: PageProps }) => {
+    const { lang } = await pageProps.params;
+
     // Simulate some server loading
     debug.log("loading ServerComponent");
-    await sleep(100);
+    await sleep(500);
     debug.log("loading ServerComponent done");
 
-    return <>{tServer(pageProps.params.lang, "serverComponent.text")}</>;
+    return <>{tServer(lang, "serverComponent.text")}</>;
 };

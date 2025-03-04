@@ -103,12 +103,12 @@ export function tHtml<ID extends MessageIDS, Params extends ParamsForID<ID>>(
             id={messageId}
             values={{
                 b: (chunks) => (
-                    <b>
+                    <b key={crypto.randomUUID()}>
                         <>{chunks}</>
                     </b>
                 ),
                 i: (chunks) => (
-                    <i>
+                    <i key={crypto.randomUUID()}>
                         <>{chunks}</>
                     </i>
                 ),
