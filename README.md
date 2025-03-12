@@ -9,7 +9,7 @@ This is the [allaboutapps](https://allaboutapps.at/) TypeScript template for Rea
 - change the "name" to your project name in `package.json`.
 - run `git init` if you want to initialize a repository. (The template comes with a pre commit hook that lints the project
   before a commit. A repository is needed for the commit hook to install correctly.)
-- run `yarn && yarn dev` to install packages and start the dev server
+- run `pnpm i && pnpm dev` to install packages and start the dev server
 - You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 ## CraftCMS projects
@@ -26,14 +26,14 @@ For headless CraftCMS projects there is a separate branch. Use `npm_config_yes=t
 For developing, previewing and testing UI components we **highly recommend** using [storybook](https://storybook.js.org/). Support
 for storybook is built in. For examples how to write simple stories see `*.stories.tsx` files (e.g. `src/components/ui/Buttons.stories.tsx`).
 
-To start the storybook use `yarn storybook`.
+To start the storybook use `pnpm storybook`.
 
 ## Builds
 - Builds are configured as `standalone` in next.config.mjs. SPA style builds (aka `output: "export"`) are not practical,
 since dynamic routes without `generateStaticParams()` are not supported (see https://nextjs.org/docs/app/building-your-application/deploying/static-exports#unsupported-features). This limitation would not allow any detail sites like `product/[productId]` because those cannot be generated statically.
-- Local production builds can be tested using `yarn build:local` and `yarn start:local`
+- Local production builds can be tested using `pnpm build:local` and `pnpm start:local`
 - Support for aaa build pipeline using woodpecker CI is provided in .drone.yml
-- Dockerfile ist provided and can be tested locally using `yarn docker:build` and `yarn docker:run`. The app is then reachable under [http://localhost:3000](http://localhost:3000)
+- Dockerfile ist provided and can be tested locally using `pnpm docker:build` and `pnpm docker:run`. The app is then reachable under [http://localhost:3000](http://localhost:3000)
 
 
 ## Env vars
@@ -79,8 +79,8 @@ prepending locales automatically (see https://github.com/vercel/next.js/discussi
 You could additionally have an asset folder per language which gives you the ability to localize assets as well. See https://github.com/vercel/next.js/discussions/36308#discussioncomment-8645411.
 
 ## Licenses
-You can generate a file containing used third party licenses using `yarn license-check`. **CC-BY-4.0** is included because of NextJS including caniuse-lite which is using CC-BY-4.0. So the license file is mandatory for attribution. 
-`yarn build` will automatically generate a license file.
+You can generate a file containing used third party licenses using `pnpm license-check`. **CC-BY-4.0** is included because of NextJS including caniuse-lite which is using CC-BY-4.0. So the license file is mandatory for attribution. 
+`pnpm build` will automatically generate a license file.
 
 ## Runtime base path changes
 Projects built using this template assume being served at domain root. E.g. `my-project.com/`. If you want to
@@ -97,7 +97,7 @@ Should you absolutely need a runtime configurable base path in your project then
 Next 14, but could break in future versions). https://github.com/vercel/next.js/discussions/41769#discussioncomment-9329938
 
 ## Testing
-Unit tests via `vitest` are supported. Run them via `yarn test` locally and `yarn test:ci` in your CI environment.
+Unit tests via `vitest` are supported. Run them via `pnpm test` locally and `pnpm test:ci` in your CI environment.
 
 
 ## How to generate types from a Swagger specification
@@ -106,11 +106,11 @@ We provide a script that lets you generate TypeScript types for a Swagger specif
 
 ### Local
 
-Run `yarn codegen local <file_name>` to generate types from a swagger file in your local repository. Note that the file needs to be located at the root folder.
+Run `pnpm codegen local <file_name>` to generate types from a swagger file in your local repository. Note that the file needs to be located at the root folder.
 
 ### Remote
 
-To use a remote source run `yarn codegen dev`. Don't forget to set a correct `BASE_URL` in `swagger-codegen.sh` which can be found in `./scripts`.
+To use a remote source run `pnpm codegen dev`. Don't forget to set a correct `BASE_URL` in `swagger-codegen.sh` which can be found in `./scripts`.
 
 ## favicon and social media link icons
 Favicon can be set using `src/app/favicon.ico` bigger versions can be set using `src/app/icon.png`. Should your

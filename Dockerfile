@@ -24,7 +24,7 @@ COPY . .
 ENV NEXT_TELEMETRY_DISABLED 1
 ARG NEXT_PUBLIC_COMMIT_HASH
 
-RUN yarn build
+RUN pnpm build
 
 # If using npm comment out above and use below instead
 # RUN npm run build
