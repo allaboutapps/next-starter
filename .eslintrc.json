@@ -8,7 +8,8 @@
     ],
     "parser": "@typescript-eslint/parser",
     "plugins": [
-        "@typescript-eslint"
+        "@typescript-eslint",
+        "react-refresh"
     ],
     "root": true,
     "parserOptions": {
@@ -26,6 +27,7 @@
         "@typescript-eslint/ban-types": "off",
         "@typescript-eslint/explicit-module-boundary-types": "off",
         "react-hooks/exhaustive-deps": "warn",
+        "react-refresh/only-export-components": "warn",
         "@typescript-eslint/no-unused-vars": [
             "warn",
             {
